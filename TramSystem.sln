@@ -6,9 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackTramControl", "TrackTr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MissionPlanning", "MissionPlanning\MissionPlanning.csproj", "{A2036D3A-33FD-4A82-8B0C-8A9D9856CEB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepoService", "DepoService\DepoService.csproj", "{3453A24B-DCAC-4D52-883A-97B9930CE25E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepotService", "DepotService\DepotService.csproj", "{3453A24B-DCAC-4D52-883A-97B9930CE25E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{B64CCC3F-4B02-46CA-A9CF-CD924FF311E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MissionPlanningService", "MissionPlanningService\MissionPlanningService.csproj", "{EE8666B6-5201-44B7-A684-F284A010DB8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,9 @@ Global
 		{B64CCC3F-4B02-46CA-A9CF-CD924FF311E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B64CCC3F-4B02-46CA-A9CF-CD924FF311E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B64CCC3F-4B02-46CA-A9CF-CD924FF311E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8666B6-5201-44B7-A684-F284A010DB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8666B6-5201-44B7-A684-F284A010DB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8666B6-5201-44B7-A684-F284A010DB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8666B6-5201-44B7-A684-F284A010DB8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

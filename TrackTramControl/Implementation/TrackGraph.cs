@@ -1,8 +1,15 @@
-using Utils;
 using System.Text.Json;
-namespace TrackTramControl; 
+using TrackTramControl.Api;
+using Utils;
 
-public class TrackGraph : ReadableTrackGraph, ModifiableTrackGraph {
+namespace TrackTramControl.Implementation; 
+
+/// <summary>
+/// Internal implementation of <see cref="ReadableTrackGraph"/> and <see cref="ModifiableTrackGraph"/>.
+///
+/// It can only be used in this library/package.
+/// </summary>
+internal class TrackGraph : ReadableTrackGraph, ModifiableTrackGraph {
 	private TrackVertex _rootTrack;
 	private readonly Dictionary<TrackId, TrackVertex> _tracks;
 
@@ -13,7 +20,7 @@ public class TrackGraph : ReadableTrackGraph, ModifiableTrackGraph {
 
 	internal TrackGraph() {
 		_rootTrack = new TrackVertex(id: TrackId.NewId(), trams: new TramId[] { }, leftAdjacent: new TrackVertex[] { }, rightAdjacent: new TrackVertex[] { });
-		_tracks = new Dictionary<TrackId, TrackVertex>();
+		_tracks = new Dictionary<TrackId, TrackVertex>(){{_rootTrack.ID, _rootTrack}};
 	}
 	
 	#region public
@@ -21,7 +28,7 @@ public class TrackGraph : ReadableTrackGraph, ModifiableTrackGraph {
 	#region query
 	
 	public string Serialize() {
-		return JsonSerializer.Serialize(new TrackVertex[]{_rootTrack}.Concat(_tracks.Values).ToArray());
+		return JsonSerializer.Serialize((new TrackVertex[]{_rootTrack}.Concat(_tracks.Values)).Select(t => t.ToJsonVersion()).ToArray());
 	}
 
 	public ReadableTrackVertex GetRootTrack() {
@@ -57,14 +64,20 @@ public class TrackGraph : ReadableTrackGraph, ModifiableTrackGraph {
 	#region internal
 
 	internal static TrackGraph Create(string serialization) {
-		TrackVertex[]? deserializedTracks = JsonSerializer.Deserialize<TrackVertex[]>(serialization);
+		TrackVertexJson[]? deserializedTracks = JsonSerializer.Deserialize<TrackVertexJson[]>(serialization);
 
 		if (deserializedTracks == null) {
 			throw new ArgumentException($"Serialization {serialization} does not represent TrackGraph correctly.");
 		}
 
-		var rootTrack = new TrackVertex(deserializedTracks[0]);
-		var tracks = new List<TrackVertex>(deserializedTracks).Slice(1, deserializedTracks.Length).Select(track => new TrackVertex(track)).ToDictionary(track => track.ID, track => track);
+		var tracks = new Dictionary<TrackId, TrackVertex>();
+		foreach (var t in deserializedTracks) {
+			t.ToTrackVertex(tracks);
+		}
+		// deserializedTracks.Select(t => t.ToTrackVertex(tracks));
+		var rootTrack = new TrackVertex(tracks[TrackId.From(deserializedTracks[0].ID)]);
+		
+		// var tracks = new List<TrackVertex>(deserializedTracks).Slice(1, deserializedTracks.Length).Select(track => new TrackVertex(track)).ToDictionary(track => track.ID, track => track);
 		return new TrackGraph(rootTrack: rootTrack, tracks: tracks);
 
 	}

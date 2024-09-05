@@ -1,8 +1,12 @@
+using TrackTramControl.Api;
 using Utils;
 
-namespace TrackTramControl; 
+namespace TrackTramControl.Implementation; 
 
-public class TrackVertex : ReadableTrackVertex {
+/// <summary>
+/// Internal representation of a track within a track graph. This class should never be used directly outside the library.
+/// </summary>
+internal class TrackVertex : ReadableTrackVertex {
 	public TrackId ID { get; }
 	private List<TramId> _trams;
 	private readonly List<TrackVertex> _leftAdjacentTracks;
@@ -16,6 +20,7 @@ public class TrackVertex : ReadableTrackVertex {
 	}
 	
 	internal TrackVertex(TrackVertex other) {
+		ID = other.ID;
 		_trams = other._trams;
 		_leftAdjacentTracks = other._leftAdjacentTracks;
 		_rightAdjacentTracks = other._rightAdjacentTracks;
@@ -30,7 +35,7 @@ public class TrackVertex : ReadableTrackVertex {
 	}
 
 	internal void AddTram(TramId tram, TramPosition position) {
-		if (position.Position > _trams.Count) {
+		if (position.Position >= _trams.Count || position.Position < 0) {
 			_trams.Add(tram);
 		} else {
 			var before = _trams.Slice(0, position.Position);
@@ -45,5 +50,11 @@ public class TrackVertex : ReadableTrackVertex {
 
 	internal void AddRightTrack(TrackVertex track) {
 		_rightAdjacentTracks.Add(track);
+	}
+
+	internal TrackVertexJson ToJsonVersion() {
+		return new TrackVertexJson(id: ID, trams: _trams,
+			leftAdjacent: _leftAdjacentTracks.Select(t => t.ToJsonVersion()),
+			rightAdjacent: _rightAdjacentTracks.Select(t => t.ToJsonVersion()));
 	}
 }

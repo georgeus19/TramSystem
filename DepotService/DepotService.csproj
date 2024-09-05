@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MissionPlanning\MissionPlanning.csproj" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
+        <PackageReference Include="NRedisStack" Version="0.12.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\TrackTramControl\TrackTramControl.csproj" />
     </ItemGroup>
 
