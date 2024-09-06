@@ -15,5 +15,5 @@ public abstract class StrategyMissionTrackGraphFinder : MissionTrackGraphFinder 
 		MissionTrackFinder = trackFinder;
 	}
 
-	public abstract TramId FindFreeTram(ReadableTrackGraph trackGraph);
+	public abstract TramId? FindFreeTram(ReadableTrackGraph trackGraph);
 }

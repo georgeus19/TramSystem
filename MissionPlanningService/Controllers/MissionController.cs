@@ -11,12 +11,14 @@ namespace MissionPlanningService.Controllers;
 
 [Route("api/")]
 public class MissionController : Controller {
-	private MissionRepository _missionRepository;
-	private HttpClient _httpClient;
+	private readonly MissionRepository _missionRepository;
+	private readonly HttpClient _httpClient;
+	private readonly ILogger<MissionController> _logger;
 
-	public MissionController(MissionRepository missionRepository, HttpClient httpClient) {
+	public MissionController(MissionRepository missionRepository, HttpClient httpClient, ILogger<MissionController> logger) {
 		_missionRepository = missionRepository;
 		_httpClient = httpClient;
+		_logger = logger;
 	}
 	
 	[Route("missions")]
@@ -35,14 +37,18 @@ public class MissionController : Controller {
 	[Route("missions")]
 	[HttpPost]
 	public async Task<IActionResult> PlanMission() {
-		DepotDto? depot =  await _httpClient.GetFromJsonAsync<DepotDto>("http://localhost:5052/api/depot");
+		DepotDto? depot =  await _httpClient.GetFromJsonAsync<DepotDto>("http://localhost:5000/api/depot");
 		if (depot == null) {
 			return BadRequest();
 		}
 		ReadableTrackGraph trackGraph = TrackGraphFactory.CreateReadableTrackGraph(depot.TrackGraph); 
 		IEnumerable<Mission> missions = await _missionRepository.GetMissions();
 		var trackGraphFinder = new RootTrackFinder(new BinarySearchTrackFinder(missions.ToDictionary(m => m.TramID, m => m)));
-		Mission plannedMission = new MissionPlanner().PlanMission(trackGraph: trackGraph, missionTrackGraphFinder: trackGraphFinder);
+		Mission? plannedMission = new MissionPlanner().PlanMission(trackGraph: trackGraph, missionTrackGraphFinder: trackGraphFinder);
+		if (plannedMission == null) {
+			return BadRequest();
+		}
+		
 		var savedMission = await _missionRepository.Create(plannedMission);
 		return Ok(new MissionDto(savedMission));
 	}

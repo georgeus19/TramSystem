@@ -6,7 +6,7 @@ namespace Utils;
 /// <summary>
 /// Implementation of ids for trams. It is meant to hide the way the ids are generated and their type.
 /// </summary>
-public struct TramId {
+public struct TramId : IEquatable<TramId> {
 	private readonly string _id;
 	
 	private TramId(string id) {
@@ -17,6 +17,10 @@ public struct TramId {
 
 	public override int GetHashCode() {
 		return _id.GetHashCode();
+	}
+
+	public bool Equals(TramId other) {
+		return _id == other._id;
 	}
 
 	public override bool Equals(object? obj) {

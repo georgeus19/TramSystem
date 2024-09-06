@@ -12,9 +12,11 @@ namespace DepotService.Controllers;
 [Route("api/depot/")]
 public class TramController : Controller {
 	private readonly TrackGraphRepository _trackGraphRepository;
+	private readonly ILogger<TramController> _logger;
 
-	public TramController(TrackGraphRepository trackGraphRepository) {
+	public TramController(TrackGraphRepository trackGraphRepository, ILogger<TramController> logger) {
 		_trackGraphRepository = trackGraphRepository;
+		_logger = logger;
 	}
 	
 	/// <summary>
@@ -26,6 +28,7 @@ public class TramController : Controller {
 	[Route("trams")]
 	[HttpPost]
 	public async Task<DepotDto> AddTram([FromBody]TramPositionDto tramPosition) {
+		_logger.LogInformation($"AddTram position: Track: {tramPosition.TrackID} Position:{tramPosition.Position}", tramPosition);
 		var tramId = TramId.NewId();
 		ModifiableTrackGraph trackGraph = await _trackGraphRepository.Get();
 		trackGraph.AddTram(tramId, tramPosition.ToTramPosition());

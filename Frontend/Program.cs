@@ -1,6 +1,7 @@
 using Frontend.Components;
 using Frontend.Services;
 using Frontend.Services.Depot;
+using Frontend.Services.Mission;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddRazorComponents()
 	.AddInteractiveServerComponents();
 builder.Services.AddScoped<HttpClient>();
 builder.Services.AddScoped<DepotService>();
+builder.Services.AddScoped<MissionPlanningService>();
 
 var app = builder.Build();
 

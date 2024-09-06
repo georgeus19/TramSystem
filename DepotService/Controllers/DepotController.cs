@@ -12,14 +12,17 @@ namespace DepotService.Controllers;
 [Route("api/")]
 public class DepotController : Controller {
 	private readonly TrackGraphRepository _trackGraphRepository;
+	private readonly ILogger<DepotController> _logger;
 
-	public DepotController(TrackGraphRepository trackGraphRepository) {
+	public DepotController(TrackGraphRepository trackGraphRepository, ILogger<DepotController> logger) {
 		_trackGraphRepository = trackGraphRepository;
+		_logger = logger;
 	}
 	
 	[Route("depot")]
 	[HttpGet]
 	public async Task<DepotDto> Get() {
+		_logger.LogInformation($"Depot Get");
 		ReadableTrackGraph trackGraph = await _trackGraphRepository.Get();
 		return new DepotDto(trackGraph.Serialize());
 	}
