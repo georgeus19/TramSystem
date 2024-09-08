@@ -1,0 +1,176 @@
+{
+  "id" : 1,
+  "name" : "Name",
+  "description" : "Description",
+  "revision" : 0,
+  "lastModifiedDate" : "2024-09-08T16:11:01Z",
+  "lastModifiedAgent" : "structurizr-web/2848/diagram",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CgogICAgICAgIHVzZXIgPSBwZXJzb24gIlVzZXIiICJQbGFucyBNaXNzaW9ucyIKCiAgICAgICAgc29mdHdhcmVTeXN0ZW0gPSBzb2Z0d2FyZVN5c3RlbSAiVHJhbVN5c3RlbSIgIlRyYW0gc29mdHdhcmUgc3lzdGVtLiIgewoKICAgICAgICAgICAgZnJvbnRlbmRDb250YWluZXIgPSBjb250YWluZXIgIkZyb250ZW5kIiAiUHJvdmlkZXMgVUkgZm9yIGFkZGluZyB0cmFtcyBhbmQgcGxhbm5pbmcgbWlzc2lvbnMuIiAiQmxhem9yIgogICAgICAgICAgICBkZXBvdENvbnRhaW5lciA9IGNvbnRhaW5lciAiRGVwb3QgU2VydmljZSIgIlNlcnZpY2UgZm9yIGludGVyYWN0aW5nIHdpdGggZGVwb3QgYW5kIGl0cyB0cmFtcy4iICJBU1AuTkVUIENvcmUiCiAgICAgICAgICAgIG1pc3Npb25QbGFubmluZ0NvbnRhaW5lciA9IGNvbnRhaW5lciAiTWlzc2lvbiBQbGFubmluZyBTZXJ2aWNlIiAiU2VydmljZSBmb3IgcGxhbm5pbmcgbWlzc2lvbnMuIiAiQVNQLk5FVCBDb3JlIgogICAgICAgICAgICBkZXBvdFN0b3JhZ2VDb250YWluZXIgPSBjb250YWluZXIgIkRlcG90IFN0b3JhZ2UiICJTdG9yYWdlIGZvciBkZXBvdCBkYXRhLiIgIlJlZGlzIgogICAgICAgICAgICBtaXNzaW9uU3RvcmFnZUNvbnRhaW5lciA9IGNvbnRhaW5lciAiTWlzc2lvbiBQbGFubmluZyBTdG9yYWdlIiAiU3RvcmFnZSBmb3IgbWlzc2lvbnMuIiAiUmVkaXMiCiAgICAgICAgfQoKICAgICAgICB1c2VyIC0+IGZyb250ZW5kQ29udGFpbmVyCiAgICAgICAgZnJvbnRlbmRDb250YWluZXIgLT4gZGVwb3RDb250YWluZXIgIkFjY2VzcyBkZXBvdCIKICAgICAgICBmcm9udGVuZENvbnRhaW5lciAtPiBtaXNzaW9uUGxhbm5pbmdDb250YWluZXIgIlBsYW4gbWlzc2lvbnMiCgogICAgICAgIG1pc3Npb25QbGFubmluZ0NvbnRhaW5lciAtPiBkZXBvdENvbnRhaW5lciAiQWNjZXNzIGRlcG90IgoKICAgICAgICBkZXBvdENvbnRhaW5lciAtPiBkZXBvdFN0b3JhZ2VDb250YWluZXIKICAgICAgICBtaXNzaW9uUGxhbm5pbmdDb250YWluZXIgLT4gbWlzc2lvblN0b3JhZ2VDb250YWluZXIKCgogICAgfQoKICAgIHZpZXdzIHsKCiAgICAgICAgY29udGFpbmVyIHNvZnR3YXJlU3lzdGVtICJTeXN0ZW1Db250YWluZXJWaWV3IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KCiAgICAgICAgCgogICAgIHN0eWxlcyB7CiAgICAgICAgZWxlbWVudCAiRWxlbWVudCIgewogICAgICAgICAgICBmb250U2l6ZSAzMgogICAgICAgICAgICBjb2xvciAjMDEyMDRFCiAgICAgICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgIH0KCiAgICAgICAgcmVsYXRpb25zaGlwICJSZWxhdGlvbnNoaXAiIHsKICAgICAgICAgICAgZm9udFNpemUgMzAKICAgICAgICB9CgogICAgICAgIGVsZW1lbnQgIkdyb3VwIiB7CiAgICAgICAgICAgIGZvbnRTaXplIDMwCiAgICAgICAgfQoKICAgICAgICBlbGVtZW50ICJBbmFseXplciIgewoKICAgICAgICB9CiAgICB9CgogICAgdGhlbWUgZGVmYXVsdAoKICAgIH0KICAgIAp9Cg=="
+  },
+  "configuration" : { },
+  "model" : {
+    "people" : [ {
+      "id" : "1",
+      "tags" : "Element,Person",
+      "name" : "User",
+      "description" : "Plans Missions",
+      "relationships" : [ {
+        "id" : "9",
+        "sourceId" : "1",
+        "destinationId" : "2",
+        "linkedRelationshipId" : "8"
+      }, {
+        "id" : "8",
+        "tags" : "Relationship",
+        "sourceId" : "1",
+        "destinationId" : "3"
+      } ],
+      "location" : "Unspecified"
+    } ],
+    "softwareSystems" : [ {
+      "id" : "2",
+      "tags" : "Element,Software System",
+      "name" : "TramSystem",
+      "description" : "Tram software system.",
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "6",
+        "tags" : "Element,Container",
+        "name" : "Depot Storage",
+        "description" : "Storage for depot data.",
+        "technology" : "Redis"
+      }, {
+        "id" : "4",
+        "tags" : "Element,Container",
+        "name" : "Depot Service",
+        "description" : "Service for interacting with depot and its trams.",
+        "relationships" : [ {
+          "id" : "13",
+          "tags" : "Relationship",
+          "sourceId" : "4",
+          "destinationId" : "6"
+        } ],
+        "technology" : "ASP.NET Core"
+      }, {
+        "id" : "3",
+        "tags" : "Element,Container",
+        "name" : "Frontend",
+        "description" : "Provides UI for adding trams and planning missions.",
+        "relationships" : [ {
+          "id" : "10",
+          "tags" : "Relationship",
+          "sourceId" : "3",
+          "destinationId" : "4",
+          "description" : "Access depot"
+        }, {
+          "id" : "11",
+          "tags" : "Relationship",
+          "sourceId" : "3",
+          "destinationId" : "5",
+          "description" : "Plan missions"
+        } ],
+        "technology" : "Blazor"
+      }, {
+        "id" : "7",
+        "tags" : "Element,Container",
+        "name" : "Mission Planning Storage",
+        "description" : "Storage for missions.",
+        "technology" : "Redis"
+      }, {
+        "id" : "5",
+        "tags" : "Element,Container",
+        "name" : "Mission Planning Service",
+        "description" : "Service for planning missions.",
+        "relationships" : [ {
+          "id" : "12",
+          "tags" : "Relationship",
+          "sourceId" : "5",
+          "destinationId" : "4",
+          "description" : "Access depot"
+        }, {
+          "id" : "14",
+          "tags" : "Relationship",
+          "sourceId" : "5",
+          "destinationId" : "7"
+        } ],
+        "technology" : "ASP.NET Core"
+      } ],
+      "documentation" : { }
+    } ]
+  },
+  "documentation" : { },
+  "views" : {
+    "containerViews" : [ {
+      "softwareSystemId" : "2",
+      "key" : "SystemContainerView",
+      "order" : 1,
+      "dimensions" : {
+        "width" : 3100,
+        "height" : 2251
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "relationships" : [ {
+        "id" : "14"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "10"
+      } ],
+      "elements" : [ {
+        "id" : "1",
+        "x" : 825,
+        "y" : 380
+      }, {
+        "id" : "3",
+        "x" : 800,
+        "y" : 1115
+      }, {
+        "id" : "4",
+        "x" : 1625,
+        "y" : 1255
+      }, {
+        "id" : "5",
+        "x" : 1625,
+        "y" : 825
+      }, {
+        "id" : "6",
+        "x" : 2200,
+        "y" : 1260
+      }, {
+        "id" : "7",
+        "x" : 2195,
+        "y" : 825
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "Element",
+          "background" : "#999999",
+          "color" : "#01204e",
+          "fontSize" : 32
+        }, {
+          "tag" : "Group",
+          "fontSize" : 30
+        }, {
+          "tag" : "Analyzer"
+        } ],
+        "relationships" : [ {
+          "tag" : "Relationship",
+          "fontSize" : 30
+        } ]
+      },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ],
+      "terminology" : { },
+      "lastSavedView" : "SystemContainerView"
+    }
+  }
+}
