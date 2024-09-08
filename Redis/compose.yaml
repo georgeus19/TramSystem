@@ -1,0 +1,19 @@
+services:
+  redis-stack:
+    image: redis/redis-stack:7.2.0-v8
+    restart: always
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          memory: 1gb
+        reservations:
+          memory: 128mb
+    volumes:
+      - "redis-data:/data"
+volumes:
+  redis-data:
+    driver: local
+
+  

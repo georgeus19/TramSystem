@@ -1,0 +1,56 @@
+services:
+  depot-service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - PROJECT_NAME=DepotService
+    ports:
+      - "5000:5000"
+    environment:
+      - PROJECT_NAME=DepotService
+      - HTTP_PORTS=5000
+      - Storage__RedisConnectionString=redis-stack:6379
+  mission-planning-service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - PROJECT_NAME=MissionPlanningService
+    ports:
+      - "5001:5001"
+    environment:
+      - PROJECT_NAME=MissionPlanningService
+      - HTTP_PORTS=5001
+      - Storage__RedisConnectionString=redis-stack:6379
+      - Services__DepotServiceUrl=http://depot-service:5000
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - PROJECT_NAME=Frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - PROJECT_NAME=Frontend
+      - HTTP_PORTS=8080
+      - Services__DepotServiceUrl=http://depot-service:5000
+      - Services__MissionPlanningServiceUrl=http://mission-planning-service:5001
+  redis-stack:
+    image: redis/redis-stack:7.2.0-v8
+    restart: always
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          memory: 1gb
+        reservations:
+          memory: 128mb
+    volumes:
+      - "redis-data:/data"
+volumes:
+  redis-data:
+    driver: local
+
