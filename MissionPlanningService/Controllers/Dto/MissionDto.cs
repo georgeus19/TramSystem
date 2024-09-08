@@ -2,6 +2,9 @@ using MissionPlanning.Api;
 
 namespace MissionPlanningService.Controllers.Dto; 
 
+/// <summary>
+/// Data Transfer Object for transmitting mission data over network.
+/// </summary>
 public class MissionDto {
 	public string ID { get; set; }
 	public string TramID { get; set; }

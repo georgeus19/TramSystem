@@ -1,15 +1,13 @@
-using MissionPlanning.Api;
 using TrackTramControl.Api;
 using Utils;
 
-namespace MissionPlanning.Implementation; 
+namespace MissionPlanning.Api.TrackFinders; 
 
 /// <summary>
 /// Implements a binary search algorithm to find the "first" tram without a mission on a given track.
 /// </summary>
 public class BinarySearchTrackFinder : MissionTrackFinder {
 	private readonly IDictionary<TramId, Mission> _tramMissions;
-	private int c = 0;
 	
 	public BinarySearchTrackFinder(IDictionary<TramId, Mission> tramMissions) {
 		_tramMissions = tramMissions;
@@ -17,7 +15,6 @@ public class BinarySearchTrackFinder : MissionTrackFinder {
 	
 	public TramId? FindFreeTram(ReadableTrackVertex track) {
 		IReadOnlyList<TramId> trams = track.GetTrams();
-		Console.WriteLine("BinarySearch");
 		return BinarySearch(trams, new SearchRange(From: 0, To: trams.Count));
 	}
 
@@ -26,8 +23,6 @@ public class BinarySearchTrackFinder : MissionTrackFinder {
 	/// that `From` is index of first range element and `To` is index of element right after the searched range (e.g. `trams.Count`).
 	/// </summary>
 	private TramId? BinarySearch(IReadOnlyList<TramId> trams, SearchRange range) {
-		Console.WriteLine($"Range {range.From} {range.To} C: {++c}");
-		
 		// There are no trams or all trams have a mission already.
 		if (range.From == range.To) {
 			return null;

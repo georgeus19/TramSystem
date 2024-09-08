@@ -1,7 +1,8 @@
-using System.Text.Json.Serialization;
+namespace MissionPlanningService.Controllers.Dto; 
 
-namespace DepotService.Controllers.Dto; 
-
+/// <summary>
+/// Data Transfer Object for transmitting depot data over network.
+/// </summary>
 public class DepotDto {
 	public string TrackGraph { get; set; }
 

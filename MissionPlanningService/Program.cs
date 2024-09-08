@@ -1,5 +1,5 @@
-using DepotService.StorageAccess;
 using MissionPlanning.Api;
+using MissionPlanningService.Lock;
 using MissionPlanningService.StorageAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<HttpClient>();
-builder.Services.AddSingleton<MissionRepository, MemoryMissionRepository>();
+builder.Services.AddScoped<MissionRepository, RedisMissionRepository>();
+builder.Services.AddSingleton<MissionPlanningLock, GlobalMissionPlanningLock>();
 
 
 var app = builder.Build();

@@ -12,7 +12,9 @@ public class TramPositionDto {
 	}
 
 	public TramPositionDto() {
-		
+		TrackID = "X";
+		Position = -1;
+
 	}
 
 	public TramPosition ToTramPosition() {

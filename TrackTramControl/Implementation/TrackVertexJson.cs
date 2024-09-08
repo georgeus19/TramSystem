@@ -4,6 +4,10 @@ using Utils;
 
 namespace TrackTramControl.Implementation; 
 
+/// <summary>
+/// Class for handling the data of <see cref="TrackVertex"/> that can be transformed to JSON easily. It is used when
+/// serialization and subsequent deserialization of TrackVertex is made.
+/// </summary>
 internal class TrackVertexJson {
 	[JsonInclude]
 	public string ID;

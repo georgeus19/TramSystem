@@ -21,9 +21,9 @@ public class DepotController : Controller {
 	
 	[Route("depot")]
 	[HttpGet]
-	public async Task<DepotDto> Get() {
+	public async Task<IActionResult> Get() {
 		_logger.LogInformation($"Depot Get");
 		ReadableTrackGraph trackGraph = await _trackGraphRepository.Get();
-		return new DepotDto(trackGraph.Serialize());
+		return Ok(new DepotDto(trackGraph.Serialize()));
 	}
 }

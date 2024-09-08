@@ -1,5 +1,7 @@
 namespace MissionPlanning.Api; 
-
+/// <summary>
+/// Implementation of ids for missions. It is meant to hide the way the ids are generated and their type.
+/// </summary>
 public class MissionId {
 	private readonly string _id;
 	

@@ -1,9 +1,13 @@
-using MissionPlanning.Implementation;
+using MissionPlanning.Api.TrackFinders;
 using TrackTramControl.Api;
 using Utils;
 
 namespace MissionPlanning.Api.TrackGraphFinders; 
 
+/// <summary>
+/// Abstract class for finding free tram to plan a mission for in a track graph. Supports
+/// adding strategies for how to find such a tram for one track (=graph vertex).
+/// </summary>
 public abstract class StrategyMissionTrackGraphFinder : MissionTrackGraphFinder {
 	protected MissionTrackFinder MissionTrackFinder { get; private set; }
 

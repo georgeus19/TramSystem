@@ -27,12 +27,12 @@ public class TramController : Controller {
 	/// <returns></returns>
 	[Route("trams")]
 	[HttpPost]
-	public async Task<DepotDto> AddTram([FromBody]TramPositionDto tramPosition) {
+	public async Task<IActionResult> AddTram([FromBody]TramPositionDto tramPosition) {
 		_logger.LogInformation($"AddTram position: Track: {tramPosition.TrackID} Position:{tramPosition.Position}", tramPosition);
 		var tramId = TramId.NewId();
 		ModifiableTrackGraph trackGraph = await _trackGraphRepository.Get();
 		trackGraph.AddTram(tramId, tramPosition.ToTramPosition());
 		var updatedTrackGraph = await _trackGraphRepository.Update(trackGraph);
-		return new DepotDto(updatedTrackGraph.Serialize());
+		return Ok(new DepotDto(updatedTrackGraph.Serialize()));
 	}
 }

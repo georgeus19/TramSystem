@@ -11,6 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddScoped<HttpClient>();
 builder.Services.AddScoped<DepotService>();
 builder.Services.AddScoped<MissionPlanningService>();
+builder.Services.AddScoped<ErrorHandler>();
 
 var app = builder.Build();
 

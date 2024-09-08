@@ -4,12 +4,17 @@ using TrackTramControl.Api.Factory;
 
 namespace DepotService.StorageAccess; 
 
+/// <summary>
+/// Redis implementation of <see cref="TrackGraphRepository"/> that stores the whole graph as one string.
+/// It just retrieves or saves the whole thing.
+/// </summary>
 public class RedisTrackGraphRepository : TrackGraphRepository {
-	private IDatabase _db;
+	private readonly IDatabase _db;
 	const string DepotKey = "depot";
 	
-	public RedisTrackGraphRepository() {
-		var redis = ConnectionMultiplexer.Connect("localhost");
+	public RedisTrackGraphRepository(IConfiguration configuration) {
+		string? connString = configuration.GetSection("Storage").GetSection("RedisConnectionString").Value;
+		var redis = ConnectionMultiplexer.Connect(connString ?? string.Empty);
 		_db = redis.GetDatabase();
 	}
 	public Task<ModifiableTrackGraph> Get() {
